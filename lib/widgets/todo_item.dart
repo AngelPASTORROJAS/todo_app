@@ -6,9 +6,9 @@ import '../model/todo.dart';
 class ToDoItem extends StatelessWidget {
   final ToDo todo;
   final onToDoChanged;
+  final onDeleteItem;
 
-
-  const ToDoItem({super.key, required this.todo, required this.onToDoChanged});
+  const ToDoItem({super.key, required this.todo, required this.onToDoChanged, required this.onDeleteItem});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,8 @@ class ToDoItem extends StatelessWidget {
               iconSize: 20,
               icon: Icon(Icons.delete),
               onPressed: () {
-                print('Cliked on delete icon');
+                // print('Cliked on delete icon');
+                onDeleteItem(todo.id);
               },
             ),
           ),
