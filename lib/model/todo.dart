@@ -1,6 +1,6 @@
 class ToDo {
-  String? id;
-  String? todoText;
+  int id;
+  String todoText;
   bool isDone;
 
   ToDo({
@@ -11,12 +11,12 @@ class ToDo {
 
   static List<ToDo> todoList() {
     return [
-      ToDo(id: '01', todoText: 'Excercie du lundi', isDone: true),
-      ToDo(id: '02', todoText: 'Faire des magasins', isDone: true),
-      ToDo(id: '03', todoText: 'Regarder ses Mails'),
-      ToDo(id: '04', todoText: 'Reunion'),
-      ToDo(id: '05', todoText: 'Travail sur les app mobil pendant 2h'),
-      ToDo(id: '06', todoText: 'AOV'),
+      ToDo(id: 1, todoText: 'Excercie du lundi', isDone: true),
+      ToDo(id: 2, todoText: 'Faire des magasins', isDone: true),
+      ToDo(id: 3, todoText: 'Regarder ses Mails'),
+      ToDo(id: 4, todoText: 'Reunion'),
+      ToDo(id: 5, todoText: 'Travail sur les app mobil pendant 2h'),
+      ToDo(id: 6, todoText: 'AOV'),
     ];
   }
 }

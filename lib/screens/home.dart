@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:todo_app/constant/colors.dart';
 import '../model/todo.dart';
@@ -13,11 +15,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final todosList = ToDo.todoList();
   final _todoController = TextEditingController();
-  List<ToDo> _fonudToDo = [];
+  List<ToDo> _foundToDo = [];
 
   @override
   void initState() {
-    _fonudToDo = todosList;
+    _foundToDo = todosList;
     super.initState();
   }
 
@@ -42,7 +44,7 @@ class _HomeState extends State<Home> {
                           TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                     ),
                   ),
-                  for (ToDo todoItem in _fonudToDo)
+                  for (ToDo todoItem in _foundToDo)
                     ToDoItem(
                       todo: todoItem,
                       onToDoChanged: _handleToChange,
@@ -106,7 +108,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _deleteToDoItem(String id) {
+  void _deleteToDoItem(int id) {
     setState(() {
       todosList.removeWhere((todo) => todo.id == id);
     });
@@ -115,7 +117,7 @@ class _HomeState extends State<Home> {
   void _addToDoItem(String toDo) {
     setState(() {
       todosList.add(ToDo(
-          id: DateTime.now().microsecondsSinceEpoch.toString(),
+          id: todosList.reduce((value, element) => value.id>element.id?value:element).id+1,
           todoText: toDo));
     });
     _todoController.clear();
@@ -128,12 +130,12 @@ class _HomeState extends State<Home> {
     } else {
       results = todosList
           .where(
-              (todo) => todo.todoText!.toLowerCase().contains(enteredKeyword))
+              (todo) => todo.todoText.toLowerCase().contains(enteredKeyword))
           .toList();
     }
 
     setState(() {
-      _fonudToDo = results;
+      _foundToDo = results;
     });
   }
 
