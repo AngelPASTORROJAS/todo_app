@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
         backgroundColor: tdBGColor,
         title:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Icon(Icons.menu, color: tdBlack, size: 30),
+          Container(),
           Container(
               height: 40,
               width: 40,
