@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/constant/colors.dart';
 import '../model/todo.dart';
 import '../widgets/todo_item.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -30,15 +28,15 @@ class _HomeState extends State<Home> {
         appBar: _buildAppBar(),
         body: Stack(children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: Column(children: [
               searchBox(),
               Expanded(
                   child: ListView(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 50, bottom: 20),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 50, bottom: 20),
+                    child: const Text(
                       'All ToDos',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
@@ -60,8 +58,8 @@ class _HomeState extends State<Home> {
               children: [
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(bottom: 20, right: 20, left: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    margin: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: const [
@@ -75,26 +73,26 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.circular(10)),
                     child: TextField(
                       controller: _todoController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: 'Add new todo item',
                           border: InputBorder.none),
                     ),
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.only(bottom: 20, right: 20),
+                    margin: const EdgeInsets.only(bottom: 20, right: 20),
                     child: ElevatedButton(
-                      child: Text(
-                        '+',
-                        style: TextStyle(fontSize: 40),
-                      ),
                       onPressed: () {
                         _addToDoItem(_todoController.text);
                       },
                       style: ElevatedButton.styleFrom(
-                          primary: tdBlue,
-                          minimumSize: Size(60, 60),
+                          backgroundColor: tdBlue,
+                          minimumSize: const Size(60, 60),
                           elevation: 10),
+                      child: const Text(
+                        '+',
+                        style: TextStyle(fontSize: 40),
+                      ),
                     ))
               ],
             ),
@@ -141,12 +139,12 @@ class _HomeState extends State<Home> {
 
   Widget searchBox() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(20)),
       child: TextField(
         onChanged: (value)=> _runFilter(value),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
             contentPadding: EdgeInsets.all(0),
             prefixIcon: Icon(
               Icons.search,
@@ -167,7 +165,7 @@ class _HomeState extends State<Home> {
         title:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Container(),
-          Container(
+          SizedBox(
               height: 40,
               width: 40,
               child: ClipRRect(
